@@ -21,8 +21,66 @@ namespace EFHierarchy.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.HasSequence("TPCChild1Sequence");
+
+            modelBuilder.HasSequence("TPCChild2Sequence");
+
+            modelBuilder.Entity("EFHierarchy.Models.TPCChild1", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValueSql("NEXT VALUE FOR [TPCChild1Sequence]");
+
+                    SqlServerPropertyBuilderExtensions.UseSequence(b.Property<int>("Id"));
+
+                    b.Property<string>("TPCChild1Field")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TPCParentField")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TPCChild1");
+
+                    b.UseTpcMappingStrategy();
+                });
+
+            modelBuilder.Entity("EFHierarchy.Models.TPCChild2", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValueSql("NEXT VALUE FOR [TPCChild2Sequence]");
+
+                    SqlServerPropertyBuilderExtensions.UseSequence(b.Property<int>("Id"));
+
+                    b.Property<string>("TPCChild2Field")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TPCParentField")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TPCChild2");
+
+                    b.UseTpcMappingStrategy();
+                });
+
             modelBuilder.Entity("EFHierarchy.Models.TPHParent", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<string>("TPHParentField")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -30,6 +88,8 @@ namespace EFHierarchy.Migrations
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("TPHParent");
 

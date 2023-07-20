@@ -1,5 +1,5 @@
-using EFHierarchy;
 using Microsoft.EntityFrameworkCore;
+using EFHierarchy;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +9,22 @@ builder.Services.AddDbContext<EFHierarchyDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("EFHierarchyConnection")),
     ServiceLifetime.Singleton);
 
-builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("allowall", policy =>
+    {
+        policy
+        .AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseCors("allowall");
 
 if (app.Environment.IsDevelopment())
 {
@@ -21,8 +33,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 

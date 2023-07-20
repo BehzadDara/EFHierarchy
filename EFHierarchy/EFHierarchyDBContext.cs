@@ -11,22 +11,28 @@ namespace EFHierarchy
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            #region TPT
+            #region TPC
 
-            modelBuilder.Entity<TPTChild1>()
-                .HasBaseType<TPTParent>()
-                .ToTable("TPTChild1");
+            modelBuilder.Entity<TPCChild1>()
+                .UseTpcMappingStrategy();
+            modelBuilder.Entity<TPCChild2>()
+                .UseTpcMappingStrategy();
 
-            modelBuilder.Entity<TPTChild2>()
-                .HasBaseType<TPTParent>()
-                .ToTable("TPTChild2");
+            /*modelBuilder.Entity<TPCParent>()
+                .ToTable("TPCParent")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<TPCChild1>()
+                .ToTable("TPCChild1");
+
+            modelBuilder.Entity<TPCChild1>()
+                .HasOne<TPCParent>()
+                .WithMany()
+                .HasForeignKey(x => x.Id);*/
 
             #endregion
 
             #region TPH
-
-            modelBuilder.Entity<TPHParent>()
-                .HasNoKey();
 
             modelBuilder.Entity<TPHParent>()
                 .HasDiscriminator<string>("Type")
@@ -39,6 +45,18 @@ namespace EFHierarchy
 
             modelBuilder.Entity<TPHChild2>()
                 .HasBaseType<TPHParent>();
+
+            #endregion
+
+            #region TPT
+
+            modelBuilder.Entity<TPTChild1>()
+                .HasBaseType<TPTParent>()
+                .ToTable("TPTChild1");
+
+            modelBuilder.Entity<TPTChild2>()
+                .HasBaseType<TPTParent>()
+                .ToTable("TPTChild2");
 
             #endregion
         }

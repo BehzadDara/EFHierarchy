@@ -18,18 +18,6 @@ namespace EFHierarchy
             modelBuilder.Entity<TPCChild2>()
                 .UseTpcMappingStrategy();
 
-            /*modelBuilder.Entity<TPCParent>()
-                .ToTable("TPCParent")
-                .HasKey(x => x.Id);
-
-            modelBuilder.Entity<TPCChild1>()
-                .ToTable("TPCChild1");
-
-            modelBuilder.Entity<TPCChild1>()
-                .HasOne<TPCParent>()
-                .WithMany()
-                .HasForeignKey(x => x.Id);*/
-
             #endregion
 
             #region TPH

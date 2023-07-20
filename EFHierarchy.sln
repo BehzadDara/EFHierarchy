@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFHierarchy", "EFHierarchy\EFHierarchy.csproj", "{6E687A84-9B9A-44EF-8481-F97A1DA28CDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E687A84-9B9A-44EF-8481-F97A1DA28CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E687A84-9B9A-44EF-8481-F97A1DA28CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E687A84-9B9A-44EF-8481-F97A1DA28CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E687A84-9B9A-44EF-8481-F97A1DA28CDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3476F05B-310B-4D8C-A132-624135BF952E}
+	EndGlobalSection
+EndGlobal
